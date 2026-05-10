@@ -41,8 +41,8 @@ export default function Navbar({ onCartClick }: Props) {
         </nav>
 
         <div className={styles.actions}>
-          <a href="tel:+380671234567" className={styles.phone}>
-            📞 +38 (067) 123-45-67
+          <a href="tel:+380682418001" className={styles.phone}>
+            📞 +38 (068) 241-80-01
           </a>
           <button className={styles.cartBtn} onClick={onCartClick}>
             🛒

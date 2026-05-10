@@ -235,14 +235,14 @@ export default function HomePage() {
               <span className={styles.sectionLabel}>Зв'язок</span>
               <h2 className={styles.sectionTitle}>Контакти</h2>
               <div className={styles.contactItems}>
-                <a href="tel:+380671234567" className={styles.contactItem}>
-                  <span>📞</span><div><strong>Телефон</strong><span>+38 (067) 123-45-67</span></div>
+                <a href="tel:+380682418001" className={styles.contactItem}>
+                  <span>📞</span><div><strong>Телефон</strong><span>+38 (068) 241-80-01</span></div>
                 </a>
-                <a href="tel:+380501234567" className={styles.contactItem}>
-                  <span>📱</span><div><strong>Viber / Telegram</strong><span>+38 (050) 123-45-67</span></div>
+                <a href="tel:+380682418001" className={styles.contactItem}>
+                  <span>📱</span><div><strong>Viber / Telegram</strong><span>+38 (068) 241-80-01</span></div>
                 </a>
                 <div className={styles.contactItem}>
-                  <span>📍</span><div><strong>Адреса складу</strong><span>вул. Соборна 12, Рівне</span></div>
+                  <span>📍</span><div><strong>Адреса складу</strong><span>вул. Генерала Безручка 18, Рівне</span></div>
                 </div>
                 <div className={styles.contactItem}>
                   <span>🕐</span><div><strong>Графік роботи</strong><span>Пн-Сб 8:00–19:00</span></div>
