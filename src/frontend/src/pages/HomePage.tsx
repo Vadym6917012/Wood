@@ -210,8 +210,8 @@ export default function HomePage() {
             </div>
             <div className={styles.deliveryCards}>
               {[
-                { icon: '🚚', title: 'Доставка по Рівному', sub: 'щодня 8:00 — 19:00' },
-                { icon: '💳', title: 'Оплата', sub: 'готівка або картка' },
+                { icon: '🚚', title: 'Доставка по Рівному', sub: ' щодня 8:00 — 19:00' },
+                { icon: '💳', title: 'Оплата', sub: ' готівка або картка' },
               ].map(c => (
                 <div key={c.title} className={styles.deliveryCard}>
                   <span className={styles.deliveryEmoji}>{c.icon}</span>
