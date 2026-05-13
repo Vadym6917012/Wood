@@ -53,7 +53,7 @@ export default function HomePage() {
               для вашого дому
             </h1>
             <p className={styles.heroSub}>
-              Дошки, брус, вагонка та паркет. Широкий асортимент,
+              Дошки, брус, вагонка. Широкий асортимент,
               доступні ціни, швидка доставка по Рівному.
             </p>
             <div className={styles.heroBtns}>
@@ -199,7 +199,7 @@ export default function HomePage() {
                 по всьому місту та Рівненській області.
               </p>
               <ul className={styles.deliveryList}>
-                <li>✅ Доставка в межах міста — від 300 грн</li>
+                <li>✅ Доставка в межах міста — від 700 грн</li>
                 <li>✅ По Рівненській області — за домовленістю</li>
                 <li>✅ Підйом на поверх — обговорюється окремо</li>
                 <li>✅ Вивантаження вантажниками — можливо</li>
@@ -211,7 +211,6 @@ export default function HomePage() {
             <div className={styles.deliveryCards}>
               {[
                 { icon: '🚚', title: 'Доставка по Рівному', sub: 'щодня 8:00 — 19:00' },
-                { icon: '📦', title: 'Самовивіз', sub: 'вул. Соборна 12, Рівне' },
                 { icon: '💳', title: 'Оплата', sub: 'готівка або картка' },
               ].map(c => (
                 <div key={c.title} className={styles.deliveryCard}>
@@ -241,9 +240,6 @@ export default function HomePage() {
                 <a href="tel:+380682418001" className={styles.contactItem}>
                   <span>📱</span><div><strong>Viber / Telegram</strong><span>+38 (068) 241-80-01</span></div>
                 </a>
-                <div className={styles.contactItem}>
-                  <span>📍</span><div><strong>Адреса складу</strong><span>вул. Генерала Безручка 18, Рівне</span></div>
-                </div>
                 <div className={styles.contactItem}>
                   <span>🕐</span><div><strong>Графік роботи</strong><span>Пн-Сб 8:00–19:00</span></div>
                 </div>
