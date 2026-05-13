@@ -127,7 +127,7 @@
   font-size: 15px;
   font-weight: 600;
   border: 2px solid rgba(245,240,232,0.3);
-  color: var(--cream);
+  color: var(--forest);
   transition: all 0.25s;
   text-decoration: none;
 }
