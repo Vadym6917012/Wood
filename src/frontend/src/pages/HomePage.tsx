@@ -216,7 +216,7 @@ export default function HomePage() {
                 <div key={c.title} className={styles.deliveryCard}>
                   <span className={styles.deliveryEmoji}>{c.icon}</span>
                   <div>
-                    <strong>{c.title}</strong>
+                    <strong>{c.title }</strong>
                     <span>{c.sub}</span>
                   </div>
                 </div>
