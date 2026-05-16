@@ -12,7 +12,7 @@ using Wood.Infrastructure.Persistence;
 namespace Wood.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260515235203_Init")]
+    [Migration("20260516165909_Init")]
     partial class Init
     {
         /// <inheritdoc />

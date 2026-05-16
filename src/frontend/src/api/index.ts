@@ -50,8 +50,19 @@ export interface OrderResponse {
   customerName: string
   phone: string
   totalAmount: number
-  createdAt: string
+  comment: string
+  deliveryRequired: boolean
+  items: OrderItem[]
+}
+
+export interface OrderSummaryResponse {
+  id: number
+  customerName: string
+  phone: string
   status: string
+  totalAmount: number
+  deliveryRequired: boolean
+  createdAt: string
 }
 
 export interface ProductsQuery {
@@ -61,13 +72,23 @@ export interface ProductsQuery {
   inStock?: boolean
 }
 
+// ── API calls ──────────────────────────────────────────────────────────────
+
 export const productsApi = {
-  getAll: (params?: ProductsQuery) => api.get<Product[]>('/products', { params }).then(r => r.data),
-  getFeatured: () => api.get<Product[]>('/products/featured').then(r => r.data),
-  getById: (id: number) => api.get<Product>(`/products/${id}`).then(r => r.data),
-  getCategories: () => api.get<Category[]>('/products/categories').then(r => r.data),
+  getAll: (params?: ProductsQuery) =>
+    api.get<Product[]>('/products', { params }).then(r => r.data),
+
+  getFeatured: () =>
+    api.get<Product[]>('/products/featured').then(r => r.data),
+
+  getById: (id: number) =>
+    api.get<Product>(`/products/${id}`).then(r => r.data),
+
+  getCategories: () =>
+    api.get<Category[]>('/products/categories').then(r => r.data),
 }
 
 export const ordersApi = {
-  create: (data: CreateOrderRequest) => api.post<OrderResponse>('/orders', data).then(r => r.data),
+  create: (data: CreateOrderRequest) =>
+    api.post<OrderSummaryResponse>('/orders', data).then(r => r.data),
 }

@@ -134,6 +134,7 @@ export default function HomePage() {
                 onClick={() => setActiveCat(null)}
               >
                 🏪 Всі
+                <span className={styles.catTabCount}>{products.length}</span>
               </button>
               {categories.map(c => (
                 <button
@@ -142,41 +143,68 @@ export default function HomePage() {
                   onClick={() => setActiveCat(c.id)}
                 >
                   {c.icon} {c.name}
+                  <span className={styles.catTabCount}>{c.productCount}</span>
                 </button>
               ))}
             </div>
             <div className={styles.filterControls}>
               <div className={styles.searchWrap}>
-                <span>🔍</span>
+                <span className={styles.searchIcon}>🔍</span>
                 <input
                   type="text"
-                  placeholder="Пошук..."
+                  placeholder="Пошук за назвою або породою..."
                   className={styles.searchInput}
                   value={search}
                   onChange={e => setSearch(e.target.value)}
                 />
+                {search && (
+                  <button
+                    onClick={() => setSearch('')}
+                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--gray-400)', fontSize: 18, lineHeight: 1, padding: '0 4px' }}
+                  >×</button>
+                )}
               </div>
-              <select className={styles.sortSelect} value={sortBy} onChange={e => setSortBy(e.target.value)}>
+              <select
+                className={styles.sortSelect}
+                value={sortBy}
+                onChange={e => setSortBy(e.target.value)}
+              >
                 <option value="">За замовчуванням</option>
-                <option value="price_asc">Ціна ↑</option>
-                <option value="price_desc">Ціна ↓</option>
-                <option value="name">Назва А-Я</option>
+                <option value="price_asc">Ціна: від низької</option>
+                <option value="price_desc">Ціна: від високої</option>
+                <option value="name">Назва А → Я</option>
               </select>
             </div>
           </div>
 
           <div className={styles.resultsInfo}>
-            Знайдено: <strong>{products.length}</strong> товарів
+            <strong>{products.length}</strong>
+            <span>товарів знайдено</span>
+            {(search || activeCat) && (
+              <>
+                <div className={styles.resultsDivider} />
+                <button
+                  onClick={() => { setSearch(''); setActiveCat(null) }}
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--amber)', fontSize: 13, fontWeight: 600, padding: 0, fontFamily: 'var(--font-body)' }}
+                >
+                  Скинути фільтри ×
+                </button>
+              </>
+            )}
           </div>
 
           {loading ? (
-            <div className={styles.loading}><div className={styles.spinner} /></div>
+            <div className={styles.loading}>
+              <div className={styles.spinner} />
+              <span className={styles.loadingText}>Завантаження товарів...</span>
+            </div>
           ) : products.length === 0 ? (
             <div className={styles.empty}>
-              <span>🪵</span>
+              <span className={styles.emptyEmoji}>🪵</span>
               <p>Товарів не знайдено</p>
+              <span>Спробуйте інший запит або категорію</span>
               <button onClick={() => { setSearch(''); setActiveCat(null) }} className={styles.resetBtn}>
-                Скинути фільтри
+                Показати всі товари
               </button>
             </div>
           ) : (

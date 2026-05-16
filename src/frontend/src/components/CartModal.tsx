@@ -34,23 +34,41 @@ export default function CartModal({ open, onClose }: Props) {
   if (!open) return null
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitting(true)
-    try {
-      const order = await ordersApi.create({
-        ...form,
-        items: items.map(i => ({ productId: i.product.id, quantity: i.quantity }))
-      })
-      setOrderId(order.id)
-      setStep('success')
-      clearCart()
-    } catch {
-      alert('Помилка. Будь ласка, зателефонуйте нам.')
-    } finally {
-      setSubmitting(false)
+  e.preventDefault()
+  setSubmitting(true)
+  try {
+    const order = await ordersApi.create({
+      customerName: form.customerName,
+      phone: form.phone,
+      email: form.email,
+      address: form.deliveryRequired ? form.address : '',
+      comment: form.comment,
+      deliveryRequired: form.deliveryRequired,
+      items: items.map(i => ({
+        productId: i.product.id,
+        quantity: i.quantity
+      }))
+    })
+    setOrderId(order.id)
+    setStep('success')
+    clearCart()
+  } catch (err: any) {
+    // Обробка ValidationException з бекенду
+    if (err.response?.status === 400) {
+      const data = err.response.data
+      if (data?.errors) {
+        const messages = Object.values(data.errors).flat().join(', ')
+        alert(`Помилка валідації: ${messages}`)
+      } else {
+        alert('Перевірте правильність заповнення форми')
+      }
+    } else {
+      alert('Помилка сервера. Будь ласка, зателефонуйте нам.')
     }
+  } finally {
+    setSubmitting(false)
   }
-
+}
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={e => e.stopPropagation()}>
